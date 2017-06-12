@@ -4,14 +4,16 @@ class Game
   def initialize(array)
     @array_length = array.length
     @out_array = Array.new(@array_length){ Array.new(@array_length) }
-    @in_array = buffer(array)
+    @in_array = Array.new(@array_length + 2){ Array.new(@array_length + 2) }
+    buffer(array)
   end
 
-  def step(i)
+  def tick(i)
     i.times do
       @row = 1
       @col = 1
       do_all_cells
+      buffer(@out_array)
     end
     @out_array
   end
@@ -19,11 +21,8 @@ class Game
   private
 
   def buffer(array)
-    array.insert(0, [0] * @array_length)
-    array << [0] * @array_length
-    array.each do |row|
-      row.insert(0, 0)
-      row << 0
+    array.each_with_index do |row, ind_x|
+      row.each_with_index { |x, ind_y| @in_array[ind_x + 1][ind_y + 1] = x }
     end
   end
 
@@ -53,12 +52,15 @@ class Game
       @in_array[@row + 1][@col],
       @in_array[@row + 1][@col + 1]
     ]
+    neighbourhood -= [nil]
     test_for_life(@in_array[@row][@col], neighbourhood)
   end
 
   def test_for_life(kingpin, neighbourhood)
     @out_array[@row-1][@col-1] = 1 if neighbourhood.inject(:+) == 3
-    @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) < 3
+    @out_array[@row-1][@col-1] = 1 if neighbourhood.inject(:+) == 2 && kingpin == 1
+    @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) == 2 && kingpin == 0
+    @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) < 2
     @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) > 3
   end
 end
