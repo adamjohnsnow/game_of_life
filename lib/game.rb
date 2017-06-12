@@ -4,8 +4,8 @@ class Game
   def initialize(array)
     @grid_height = array.length
     @grid_width = array[0].length
-    @out_array = Array.new(@grid_height){ Array.new(@grid_width) }
-    @in_array = Array.new(@grid_height + 2){ Array.new(@grid_width + 2) }
+    @out_array = Array.new(@grid_height) { Array.new(@grid_width) }
+    @in_array = Array.new(@grid_height + 2) { Array.new(@grid_width + 2, 0) }
     buffer(array)
   end
 
@@ -43,25 +43,42 @@ class Game
   end
 
   def build_neighbourhood
-    neighbourhood = [
+    surrounds = [
+      top_row_neighbours.inject(:+),
+      side_neighbours.inject(:+),
+      bottom_row_neighbours.inject(:+)
+    ].inject(:+)
+    test_for_life(@in_array[@row][@col], surrounds)
+  end
+
+  def top_row_neighbours
+    return [
       @in_array[@row - 1][@col - 1],
       @in_array[@row - 1][@col],
-      @in_array[@row - 1][@col + 1],
+      @in_array[@row - 1][@col + 1]
+    ]
+  end
+
+  def side_neighbours
+    return [
       @in_array[@row][@col - 1],
-      @in_array[@row][@col + 1],
+      @in_array[@row][@col + 1]
+    ]
+  end
+
+  def bottom_row_neighbours
+    return [
       @in_array[@row + 1][@col - 1],
       @in_array[@row + 1][@col],
       @in_array[@row + 1][@col + 1]
     ]
-    neighbourhood -= [nil]
-    test_for_life(@in_array[@row][@col], neighbourhood)
   end
 
-  def test_for_life(kingpin, neighbourhood)
-    @out_array[@row-1][@col-1] = 1 if neighbourhood.inject(:+) == 3
-    @out_array[@row-1][@col-1] = 1 if neighbourhood.inject(:+) == 2 && kingpin == 1
-    @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) == 2 && kingpin == 0
-    @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) < 2
-    @out_array[@row-1][@col-1] = 0 if neighbourhood.inject(:+) > 3
+  def test_for_life(centre, surrounds)
+    @out_array[@row - 1][@col - 1] = 1 if surrounds == 3
+    @out_array[@row - 1][@col - 1] = 1 if surrounds == 2 && centre == 1
+    @out_array[@row - 1][@col - 1] = 0 if surrounds == 2 && centre.zero?
+    @out_array[@row - 1][@col - 1] = 0 if surrounds < 2
+    @out_array[@row - 1][@col - 1] = 0 if surrounds > 3
   end
 end

@@ -2,18 +2,18 @@ require 'game'
 
 describe Game do
 
-  it 'buffers a simple array with a layer of nils' do
+  it 'buffers a simple array with a layer of zeros' do
     game = Game.new([
       [1, 0, 0],
       [0, 0, 0],
       [0, 0, 0]
       ])
     expect(game.in_array).to eq [
-      [nil, nil, nil, nil, nil],
-      [nil, 1, 0, 0, nil],
-      [nil, 0, 0, 0, nil],
-      [nil, 0, 0, 0, nil],
-      [nil, nil, nil, nil, nil]
+      [0, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
     ]
   end
 
@@ -146,7 +146,7 @@ describe Game do
       ])
   end
 
-  it 'Conway\s drifting glider shape' do
+  it 'Conway\'s drifting glider shape' do
     game = Game.new([
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
