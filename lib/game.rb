@@ -1,5 +1,6 @@
 class Game
   require_relative './buffer'
+  require_relative './analyser'
   attr_reader :out_array, :in_array
 
   def initialize(array)

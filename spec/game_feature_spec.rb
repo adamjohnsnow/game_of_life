@@ -1,7 +1,7 @@
 require 'game'
 
 describe Game do
-  
+
   it 'ticks a simple array #1' do
     game = Game.new([
       [1, 0, 0],
@@ -163,5 +163,4 @@ describe Game do
       [0, 0, 0, 0, 0, 0, 0, 0]
       ])
   end
-
 end
