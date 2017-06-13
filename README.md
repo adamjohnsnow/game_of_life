@@ -46,3 +46,11 @@ So, starting with the number at `array[1][1]`, I can iterate over the original g
 #### Testing
 
 In early testing, I used basic grids and wrote expectations based on what I calculated their results should be. But I realised that my understanding of the rules could have been flawed. This game was created in 1970, so there are many resources dedicated to it. Using some of Conway's original findings, I recreated some small grids with predictable results; a 2x2 grid of live cells should never change ('stable') for example, so I wrote a test to check that the grid did not change after 20 'ticks'. I also found a shape known as a 'glider', which regenerated every 4 ticks, one cell up and left, a test is written to track the progress of this shape across an 8x8 grid over 20 ticks. With these externally validated tests, I can be sure that the game-logic is functioning correctly.
+
+#### Quickstart
+```
+git clone https://github.com/adamjohnsnow/game_of_life.git
+cd game_of_life/
+bundle install
+rspec
+```

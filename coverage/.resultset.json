@@ -42,11 +42,11 @@
       ],
       "/Users/adamsnow/OneDrive/MacBook/Coding/weekly_projects/tech_tests/game_of_life/lib/analyser.rb": [
         1,
-        1,
         null,
         1,
         253,
         1141,
+        253,
         253,
         253,
         253,
@@ -119,13 +119,13 @@
       ],
       "/Users/adamsnow/OneDrive/MacBook/Coding/weekly_projects/tech_tests/game_of_life/lib/buffer.rb": [
         1,
-        1,
         null,
         1,
         1647,
         253,
         5086,
         null,
+        253,
         null,
         null,
         null
@@ -346,12 +346,6 @@
       ],
       "/Users/adamsnow/OneDrive/MacBook/Coding/weekly_projects/tech_tests/game_of_life/lib/neighbourhood.rb": [
         1,
-        1,
-        null,
-        1,
-        4202,
-        4202,
-        null,
         null,
         1,
         4202,
@@ -365,6 +359,6 @@
         null
       ]
     },
-    "timestamp": 1497367871
+    "timestamp": 1497371130
   }
 }

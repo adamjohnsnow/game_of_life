@@ -9,8 +9,8 @@ class Game
 
   def tick(ticks)
     ticks.times do
-      @in_array = Buffer.new(@out_array).output
-      @out_array = Analyser.new(@in_array).output
+      @in_array = Buffer.add_buffer(@out_array)
+      @out_array = Analyser.analyse(@in_array)
     end
     @out_array
   end
