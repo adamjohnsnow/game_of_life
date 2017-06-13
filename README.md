@@ -21,7 +21,7 @@ The rules are as follows:
 
 #### Iterating logic
 
-The code is provided with, for example, a 3x3 grid of 1's (live) and 0's (dead):
+Starting with, for example, a 3x3 grid of 1's (live) and 0's (dead):
 <table>
   <tr><th>1</th><th>0</th><th>1</th></tr>
   <tr><th>0</th><th>1</th><th>1</th></tr>

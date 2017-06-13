@@ -1,34 +1,26 @@
 class Game
+  require_relative './buffer'
   attr_reader :out_array, :in_array
 
   def initialize(array)
-    @grid_height = array.length
-    @grid_width = array[0].length
-    @out_array = Array.new(@grid_height) { Array.new(@grid_width) }
-    @in_array = Array.new(@grid_height + 2) { Array.new(@grid_width + 2, 0) }
-    buffer(array)
+    @out_array = array
+    @in_array = Buffer.new(array).in_array
   end
 
   def tick(ticks)
     ticks.times do
+      @in_array = Buffer.new(@out_array).in_array
       @row = 1
       @col = 1
       do_all_cells
-      buffer(@out_array)
     end
     @out_array
   end
 
   private
 
-  def buffer(array)
-    array.each_with_index do |row, ind_x|
-      row.each_with_index { |x, ind_y| @in_array[ind_x + 1][ind_y + 1] = x }
-    end
-  end
-
   def do_all_cells
-    while @row <= @grid_height
+    while @row <= @out_array.length
       do_row_check
       @col = 1
       @row += 1
@@ -36,7 +28,7 @@ class Game
   end
 
   def do_row_check
-    while @col <= @grid_width
+    while @col <= @out_array[0].length
       build_neighbourhood
       @col += 1
     end
@@ -44,34 +36,34 @@ class Game
 
   def build_neighbourhood
     surrounds = [
-      top_row_neighbours.inject(:+),
-      side_neighbours.inject(:+),
-      bottom_row_neighbours.inject(:+)
+      top_neighbours_sum,
+      side_neighbours_sum,
+      bottom_neighbours_sum
     ].inject(:+)
     test_for_life(@in_array[@row][@col], surrounds)
   end
 
-  def top_row_neighbours
+  def top_neighbours_sum
     return [
       @in_array[@row - 1][@col - 1],
       @in_array[@row - 1][@col],
       @in_array[@row - 1][@col + 1]
-    ]
+    ].inject(:+)
   end
 
-  def side_neighbours
+  def side_neighbours_sum
     return [
       @in_array[@row][@col - 1],
       @in_array[@row][@col + 1]
-    ]
+    ].inject(:+)
   end
 
-  def bottom_row_neighbours
+  def bottom_neighbours_sum
     return [
       @in_array[@row + 1][@col - 1],
       @in_array[@row + 1][@col],
       @in_array[@row + 1][@col + 1]
-    ]
+    ].inject(:+)
   end
 
   def test_for_life(centre, surrounds)
