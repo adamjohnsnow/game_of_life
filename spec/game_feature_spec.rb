@@ -1,22 +1,7 @@
 require 'game'
 
 describe Game do
-
-  it 'buffers a simple array with a layer of zeros' do
-    game = Game.new([
-      [1, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0]
-      ])
-    expect(game.in_array).to eq [
-      [0, 0, 0, 0, 0],
-      [0, 1, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0]
-    ]
-  end
-
+  
   it 'ticks a simple array #1' do
     game = Game.new([
       [1, 0, 0],

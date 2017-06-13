@@ -8,7 +8,7 @@ describe Buffer do
       [0, 0, 0],
       [0, 0, 0]
       ])
-    expect(buffer.in_array).to eq [
+    expect(buffer.output).to eq [
       [0, 0, 0, 0, 0],
       [0, 1, 0, 0, 0],
       [0, 0, 0, 0, 0],
@@ -24,7 +24,7 @@ describe Buffer do
       [0, 0, 0, 0, 0],
       [0, 1, 0, 1, 0]
       ])
-    expect(buffer.in_array).to eq [
+    expect(buffer.output).to eq [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 1, 0, 0, 0],
       [0, 1, 1, 0, 0, 0, 0],
