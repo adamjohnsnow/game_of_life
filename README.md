@@ -41,7 +41,7 @@ These are stored in an array of arrays with an added a layer of 0's around the g
 [[0, 0, 0, 0, 0], [0, 1, 0, 1 ,0], [0, 0, 1, 1, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 0]]
 ```
 
-So, starting with the number at array index[1][1], I can iterate over the original grid, taking each number and it's eight neighbours, and evaluating whether the central number (index[1][1]) should live or die, based on the sum of the neighbours. If we were to stick with just the original 3x3 grid, this would have involved different processes for the top, bottom, left and right numbers... all but the central number in a 3x3 grid.
+So, starting with the number at array `index[1][1]`, I can iterate over the original grid, taking each number and it's eight neighbours, and evaluating whether the central number (`index[1][1]`) should live or die, based on the sum of the neighbours. If we were to stick with just the original 3x3 grid, this would have involved different processes for the top, bottom, left and right numbers... all but the central number in a 3x3 grid.
 
 #### Testing
 
