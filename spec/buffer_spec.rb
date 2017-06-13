@@ -2,7 +2,7 @@ require 'buffer'
 
 describe Buffer do
 
-  it 'buffers a simple 3x3 array with a layer of zeros' do
+  it 'buffers a 3x3 grid with a layer of zeros' do
     buffer = Buffer.new([
       [1, 0, 0],
       [0, 0, 0],
@@ -17,7 +17,7 @@ describe Buffer do
     ]
   end
 
-  it 'buffers a simple 5x4 array with a layer of zeros' do
+  it 'buffers a 5x4 grid with a layer of zeros' do
     buffer = Buffer.new([
       [0, 0, 1, 0, 0],
       [1, 1, 0, 0, 0],

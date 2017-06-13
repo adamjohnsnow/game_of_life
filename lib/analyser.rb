@@ -6,61 +6,46 @@ class Analyser
     @output = Array.new(input.length - 2) { Array.new(input[0].length - 2, 0) }
     @row = 1
     @col = 1
-    do_all_cells
+    loop_each_row
   end
 
-  def do_all_cells
+  private
+  
+  def loop_each_row
     while @row <= @output.length
-      do_row_check
+      loop_each_column
       @col = 1
       @row += 1
     end
   end
 
-  def do_row_check
+  def loop_each_column
     while @col <= @output[0].length
-      build_neighbourhood
+      test_neighbourhood
       @col += 1
     end
   end
 
-  def build_neighbourhood
-    surrounds = [
-      top_neighbours_sum,
-      side_neighbours_sum,
-      bottom_neighbours_sum
-    ].inject(:+)
-    test_for_life(@input[@row][@col], surrounds)
+  def test_neighbourhood
+    @centre = @input[@row][@col]
+    @neighbourhood_total = sum_neighbours.inject(:+)
+    test_for_life
   end
 
-  def top_neighbours_sum
-    return [
-      @input[@row - 1][@col - 1],
-      @input[@row - 1][@col],
-      @input[@row - 1][@col + 1]
-    ].inject(:+)
+  def sum_neighbours
+    [
+      @input[@row - 1][@col - 1], @input[@row - 1][@col],
+      @input[@row - 1][@col + 1], @input[@row][@col - 1],
+      @input[@row][@col + 1], @input[@row + 1][@col - 1],
+      @input[@row + 1][@col], @input[@row + 1][@col + 1]
+    ]
   end
 
-  def side_neighbours_sum
-    return [
-      @input[@row][@col - 1],
-      @input[@row][@col + 1]
-    ].inject(:+)
-  end
-
-  def bottom_neighbours_sum
-    return [
-      @input[@row + 1][@col - 1],
-      @input[@row + 1][@col],
-      @input[@row + 1][@col + 1]
-    ].inject(:+)
-  end
-
-  def test_for_life(centre, surrounds)
-    @output[@row - 1][@col - 1] = 1 if surrounds == 3
-    @output[@row - 1][@col - 1] = 1 if surrounds == 2 && centre == 1
-    @output[@row - 1][@col - 1] = 0 if surrounds == 2 && centre.zero?
-    @output[@row - 1][@col - 1] = 0 if surrounds < 2
-    @output[@row - 1][@col - 1] = 0 if surrounds > 3
+  def test_for_life
+    @output[@row - 1][@col - 1] = 1 if @neighbourhood_total == 3
+    @output[@row - 1][@col - 1] = 1 if @neighbourhood_total == 2 && @centre == 1
+    @output[@row - 1][@col - 1] = 0 if @neighbourhood_total == 2 && @centre.zero?
+    @output[@row - 1][@col - 1] = 0 if @neighbourhood_total < 2
+    @output[@row - 1][@col - 1] = 0 if @neighbourhood_total > 3
   end
 end
