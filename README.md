@@ -29,8 +29,8 @@ Starting with a 3x3 grid of 1's (live) and 0's (dead):
  I added a layer of 0's around the grid to allow me to easily itterate each number in the original grid and it's neighbours:
  <table>
  <tr><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
- <tr><th>0</th><div color="red"><th>1</th><th>0</th><th>1</th></div><th>0</th></tr>
- <tr><th>0</th><th>0</th><th>1</th><th>1</th><th>0</th></tr>
- <tr><th>0</th><th>0</th><th>0</th><th>1</th><th>0</th></tr>
+ <tr><th>0</th><em><th>1</th><th>0</th><th>1</th></em><th>0</th></tr>
+ <tr><th>0</th><em><th>0</th><th>1</th><th>1</th></em><th>0</th></tr>
+ <tr><th>0</th><em><th>0</th><th>0</th><th>1</th></em><th>0</th></tr>
  <tr><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
 </table>
