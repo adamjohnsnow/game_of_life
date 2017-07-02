@@ -28,15 +28,33 @@ module Analyser
 
   def self.create_neighbourhood_array
     [
-      [get_neighbours(@row - 1, @col - 1),
+      create_top_neighbours,
+      create_middle_neighbours,
+      create_bottom_neighbours
+    ]
+  end
+
+  def self.create_top_neighbours
+    [
+      get_neighbours(@row - 1, @col - 1),
       get_neighbours(@row - 1, @col),
-      get_neighbours(@row - 1, @col + 1)],
-      [get_neighbours(@row, @col - 1),
+      get_neighbours(@row - 1, @col + 1)
+    ]
+  end
+
+  def self.create_middle_neighbours
+    [
+      get_neighbours(@row, @col - 1),
       get_neighbours(@row, @col),
-      get_neighbours(@row, @col + 1)],
-      [get_neighbours(@row + 1, @col - 1),
+      get_neighbours(@row, @col + 1)
+    ]
+  end
+
+  def self.create_bottom_neighbours
+    [
+      get_neighbours(@row + 1, @col - 1),
       get_neighbours(@row + 1, @col),
-      get_neighbours(@row + 1, @col + 1)]
+      get_neighbours(@row + 1, @col + 1)
     ]
   end
 

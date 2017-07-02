@@ -5,7 +5,7 @@ class RandomGrid
   ROWS = 50
   COLUMNS = 100
 
-  def self.create()
+  def self.create
     grid = []
     ROWS.times do
       grid << new_row
