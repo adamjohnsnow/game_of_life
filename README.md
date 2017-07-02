@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-<img src="http://gph.to/2sAMVzv">
+<img src="https://media.giphy.com/media/A9hpY1CJ3eDdu/giphy.gif">
 
 #### Quickstart
 ```
