@@ -2,8 +2,8 @@ class RandomGrid
 
   attr_reader :grid
 
-  ROWS = 40
-  COLUMNS = 80
+  ROWS = 50
+  COLUMNS = 100
 
   def self.create()
     grid = []

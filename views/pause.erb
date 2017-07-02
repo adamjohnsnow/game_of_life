@@ -1,14 +1,13 @@
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<a href="/loop">continue</a>
-<div>
-<% @game.out_array.each do |row| %>
-  <div class="table-row">
-    <% row.each do |cell| %>
-      <div class="cell type<%=cell%>"></div>
-    <% end %>
-  </div>
-<% end %>
-</div>
-<a href="/">Restart</a>
+<%= erb(:header) %>
+<p>
+  <a href="/loop">
+    <button type="button" class="btn">
+      Continue >
+    </button>
+  </a>
+</p>
+<%= erb(:grid) %>

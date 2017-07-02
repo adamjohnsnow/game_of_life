@@ -1,16 +1,43 @@
 .cell {
   display: table-cell;
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
 }
 .type0 {
-  background-color: white;
-  color: white;
+  background-color: #DDD3E8;
 }
 .type1 {
-  background-color: black;
-  color: black;
+  background-color: #774FC6;
 }
 .table-row {
   display: table-row;
+}
+.grid {
+display: inline;
+margin: 0 auto;
+vertical-align: middle;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  color: rgb(64, 26, 140);
+}
+
+.btn{
+ display: inline-block;
+ border: none;
+ color: #FFFFFF;
+ border-radius: 3px 3px 3px 3px;
+ -webkit-border-radius: 3px 3px 3px 3px;
+ -moz-border-radius: 3px 3px 3px 3px;
+ font-family: Verdana;
+ width: auto;
+ height: auto;
+ font-size: 16px;
+ padding: 10px 40px;
+ background-color: #774FC6;
 }

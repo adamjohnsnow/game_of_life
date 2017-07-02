@@ -1,15 +1,13 @@
 <head>
-  <meta http-equiv="refresh" content="0.4; url=/loop" />
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
+  <meta http-equiv="refresh" content="0.7; url=/loop" />
 </head>
-<a href="/pause">Pause</a>
-<div>
-<% @game.out_array.each do |row| %>
-  <div class="table-row">
-    <% row.each do |cell| %>
-      <div class="cell type<%=cell%>"></div>
-    <% end %>
-  </div>
-<% end %>
-</div>
-<a href="/">Restart</a>
+<%= erb(:header) %>
+<p>
+  <a href="/pause">
+    <button type="button" class="btn">
+      Pause ||
+    </button>
+  </a>
+</p>
+<%= erb(:grid) %>
