@@ -3,7 +3,7 @@ class Game
   require_relative './random_grid'
   attr_reader :out_array, :in_array
 
-  def initialize(array = RandomGrid.create(50))
+  def initialize(array = RandomGrid.create())
     @out_array = array
   end
 

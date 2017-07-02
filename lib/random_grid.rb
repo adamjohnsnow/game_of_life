@@ -2,20 +2,23 @@ class RandomGrid
 
   attr_reader :grid
 
-  def self.create(size)
+  ROWS = 40
+  COLUMNS = 80
+
+  def self.create()
     grid = []
-    size.times do
-      grid << new_row(size)
+    ROWS.times do
+      grid << new_row
     end
-    return grid
+    grid
   end
 
-  def self.new_row(length)
+  def self.new_row
     row = []
-    length.times do
+    COLUMNS.times do
       row << rand(0..1)
     end
-    return row
+    row
   end
 
 end

@@ -1,0 +1,16 @@
+.cell {
+  display: table-cell;
+  width: 15px;
+  height: 15px;
+}
+.type0 {
+  background-color: white;
+  color: white;
+}
+.type1 {
+  background-color: black;
+  color: black;
+}
+.table-row {
+  display: table-row;
+}

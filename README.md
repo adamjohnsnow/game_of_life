@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Game_of_life_animated_glider.gif">
+<img src="https://giphy.com/embed/A9hpY1CJ3eDdu.gif">
 
 #### Quickstart
 ```
