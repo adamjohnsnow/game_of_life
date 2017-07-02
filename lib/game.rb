@@ -1,15 +1,15 @@
 class Game
-  require_relative './buffer'
   require_relative './analyser'
+  require_relative './random_grid'
   attr_reader :out_array, :in_array
 
-  def initialize(array)
+  def initialize(array = RandomGrid.create(50))
     @out_array = array
   end
 
   def tick(ticks)
     ticks.times do
-      @in_array = Buffer.add_buffer(@out_array)
+      @in_array = @out_array
       @out_array = Analyser.analyse(@in_array)
     end
     @out_array
