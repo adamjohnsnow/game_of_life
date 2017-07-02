@@ -8,7 +8,11 @@ git clone https://github.com/adamjohnsnow/game_of_life.git
 cd game_of_life/
 bundle install
 rspec
+rackup
 ```
+visit `localhost:9292`
+
+
 The Game of life is a zero player game developed in the 70s by John Horton Conway. Check out the [wikipedia article](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) for a full description.
 The evolving state of the game is determined by the initial configuration - some configurations become infinitely evolving constellations, others eventually evolve into a stable patterns, whilst others die off completely.
 It is commonly used as a tech test as it can be solved in many different ways that clearly show the level of the programmer.
@@ -24,31 +28,6 @@ The rules are as follows:
 * Any live cell with more than 3 live neighbours dies (overpopulation).
 * Any dead cell with exactly 3 neighbours becomes a live cell (reproduction).
 
-### My approach
-
-#### Iterating logic
-
-Starting with, for example, a 3x3 grid of 1's (live) and 0's (dead):
-<table>
-  <tr><th>1</th><th>0</th><th>1</th></tr>
-  <tr><th>0</th><th>1</th><th>1</th></tr>
-  <tr><th>0</th><th>0</th><th>1</th></tr>
-</table>
-
-These are stored in an array of arrays with an added a layer of 0's around the grid to allow me to easily iterate over groups of 3x3:
-<table>
-  <tr><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
-  <tr><th>0</th><th>1</th><th>0</th><th>1</th><th>0</th></tr>
-  <tr><th>0</th><th>0</th><th>1</th><th>1</th><th>0</th></tr>
-  <tr><th>0</th><th>0</th><th>0</th><th>1</th><th>0</th></tr>
-  <tr><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
-</table>
-
-```
-[[0, 0, 0, 0, 0], [0, 1, 0, 1 ,0], [0, 0, 1, 1, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 0]]
-```
-
-So, starting with the number at `array[1][1]`, I can iterate over the original grid, taking each number and it's eight neighbours, and evaluating whether the central number (`array[1][1]`) should live or die, based on the sum of the neighbours. If we were to stick with just the original 3x3 grid, this would have involved different processes for the top and bottom rows, and left and right numbers within all rows... every number in a 3x3 grid, bar the central number, would need to be treated as an exception.
 
 #### Testing
 
