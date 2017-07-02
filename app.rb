@@ -8,7 +8,8 @@ class GameOfLife < Sinatra::Base
   use Rack::Session::Pool
 
   get '/' do
-    @game = session[:game]
+    @game = Game.new()
+    session[:game] = @game
     erb(:index)
   end
 
