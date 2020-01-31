@@ -1,7 +1,5 @@
 # Conway's Game of Life
 
-<img src="https://media.giphy.com/media/A9hpY1CJ3eDdu/giphy.gif">
-
 #### Quickstart
 ```
 git clone https://github.com/adamjohnsnow/game_of_life.git
